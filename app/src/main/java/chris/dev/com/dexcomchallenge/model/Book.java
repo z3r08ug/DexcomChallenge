@@ -4,7 +4,9 @@ package chris.dev.com.dexcomchallenge.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Book
+import java.io.Serializable;
+
+public class Book implements Serializable
 {
 
     @SerializedName("title")
