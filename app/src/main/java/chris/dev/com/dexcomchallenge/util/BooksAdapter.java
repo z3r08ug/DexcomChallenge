@@ -94,7 +94,8 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder>
                     NotificationManagerCompat notificationManager =
                             NotificationManagerCompat.from(context);
                     
-                    //Issue the notification 
+                    //Issue the notification by passing the notification using notification manager
+                    notificationManager.notify(notificationId, notificationBuilder.build());
                 }
             });
         }
