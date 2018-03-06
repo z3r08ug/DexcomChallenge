@@ -2,9 +2,12 @@ package chris.dev.com.dexcomchallenge.view.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,6 +15,7 @@ import javax.inject.Inject;
 import chris.dev.com.dexcomchallenge.R;
 import chris.dev.com.dexcomchallenge.application.DexcomApplication;
 import chris.dev.com.dexcomchallenge.model.Book;
+import chris.dev.com.dexcomchallenge.util.BooksAdapter;
 
 
 public class MainActivity extends AppCompatActivity implements MainContract.View
@@ -19,9 +23,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public static final String TAG = MainActivity.class.getSimpleName() + "_TAG";
     @Inject
     MainPresenter presenter;
-//    private List<Book> books;
+    private List<Book> books;
     private RecyclerView recyclerView;
-//    private EventsAdapter booksAdapter;
+    private BooksAdapter booksAdapter;
     
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,10 +42,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     
     private void bindViews()
     {
-//        books = new ArrayList<>();
-//        recyclerView = findViewById(R.id.rvEvents);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        books = new ArrayList<>();
+        recyclerView = findViewById(R.id.rvBooks);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
     
     @Override
@@ -60,8 +64,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void setBooks(List<Book> books)
     {
-//        recyclerAdapter = new RecyclerAdapter(weather);
-//        recyclerView.setAdapter(recyclerAdapter);
+        booksAdapter = new BooksAdapter(books);
+        recyclerView.setAdapter(booksAdapter);
     }
     
     @Override
