@@ -3,7 +3,9 @@ package chris.dev.com.dexcomchallenge.data.remote;
 import android.os.Environment;
 
 import java.io.File;
+import java.util.List;
 
+import chris.dev.com.dexcomchallenge.model.Book;
 import io.reactivex.Observable;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
@@ -56,7 +58,7 @@ public class RemoteDataSource
         return retrofit;
     }
     
-    public static Observable<BookResponse> getWeather()
+    public static Observable<List<Book>> getBooks()
     {
         Retrofit retrofit = create();
         RemoteService remoteService = retrofit.create(RemoteService.class);

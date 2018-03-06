@@ -5,10 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import chris.dev.com.dexcomchallenge.R;
 import chris.dev.com.dexcomchallenge.application.DexcomApplication;
+import chris.dev.com.dexcomchallenge.model.Book;
 
 
 public class MainActivity extends AppCompatActivity implements MainContract.View
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
     
     @Override
-    public void setBooks(BookResponse books)
+    public void setBooks(List<Book> books)
     {
 //        recyclerAdapter = new RecyclerAdapter(weather);
 //        recyclerView.setAdapter(recyclerAdapter);

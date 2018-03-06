@@ -1,5 +1,8 @@
 package chris.dev.com.dexcomchallenge.view.main;
 
+import java.util.List;
+
+import chris.dev.com.dexcomchallenge.model.Book;
 import chris.dev.com.dexcomchallenge.util.BasePresenter;
 import chris.dev.com.dexcomchallenge.util.BaseView;
 
@@ -11,7 +14,7 @@ public interface MainContract
 {
     interface  View extends BaseView
     {
-        void setBooks(BookResponse books);
+        void setBooks(List<Book> books);
         void showProgress(String message);
         void showError(String error);
     }

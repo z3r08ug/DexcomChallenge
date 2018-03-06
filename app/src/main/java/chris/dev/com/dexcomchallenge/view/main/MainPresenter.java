@@ -2,9 +2,12 @@ package chris.dev.com.dexcomchallenge.view.main;
 
 import android.util.Log;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import chris.dev.com.dexcomchallenge.data.remote.RemoteDataSource;
+import chris.dev.com.dexcomchallenge.model.Book;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -20,7 +23,7 @@ public class MainPresenter implements MainContract.Presenter
     RemoteDataSource remoteDataSource;
     MainContract.View view;
     public static final String TAG = MainPresenter.class.getSimpleName() + "_TAG";
-    private BookResponse books;
+    private List<Book> books;
     
     @Inject
     public MainPresenter(RemoteDataSource remoteDataSource)
@@ -48,10 +51,10 @@ public class MainPresenter implements MainContract.Presenter
     @Override
     public void getWeather()
     {
-        RemoteDataSource.getWeather()
+        RemoteDataSource.getBooks()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<BookResponse>()
+                .subscribe(new Observer<List<Book>>()
                 {
                     @Override
                     public void onSubscribe(Disposable d)
@@ -60,7 +63,7 @@ public class MainPresenter implements MainContract.Presenter
                     }
 
                     @Override
-                    public void onNext(BookResponse weatherResponse)
+                    public void onNext(List<Book> weatherResponse)
                     {
                         books = weatherResponse;
                     }
